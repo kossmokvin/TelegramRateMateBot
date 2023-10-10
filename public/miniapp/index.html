@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>RateMate Telegram App</title>
+      <script src="https://telegram.org/js/telegram-web-app.js"></script>
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script src="https://unpkg.com/vue-i18n@8"></script>
+      <script>
+          const themeParams = window.Telegram?.WebApp?.themeParams || {};
+          tailwind.config = {
+              theme: {
+                  extend: {
+                      colors: {
+                          "tg-background": themeParams.bg_color || "#1d2733",
+                          "tg-background2": themeParams.secondary_bg_color || "#151e27",
+                          "tg-text": themeParams.text_color || "#fff",
+                          "tg-hint": themeParams.hint_color || "#7d8b99",
+                          "tg-link": themeParams.link_color || "#5eabe1",
+                          "tg-button": themeParams.button_color || "#50a8eb",
+                          "tg-button-text": themeParams.button_text_color || "#fff"
+                      }
+                  }
+              }
+          };
+      </script>
+    <script type="module" crossorigin src="/assets/index-65bb0a5a.js"></script>
+    <link rel="stylesheet" href="/assets/index-2342fbff.css">
+  </head>
+  <body class="bg-tg-background text-tg-text">
+    <div id="app"></div>
+    
+  </body>
+</html>
