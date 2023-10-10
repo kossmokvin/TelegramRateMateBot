@@ -28,13 +28,15 @@ export default {
     const { isPremiumUser } = useInitData();
 
     const showPopup = () => {
-      const title = "Blocked";
-      const message =
-        "Anonymous posting of reviews is available to Telegram Premium users only";
-      window.Telegram?.WebApp?.showPopup({
-        title,
-        message,
-      });
+      if(!isPremiumUser.value) {
+        const title = "Blocked";
+        const message =
+            "Anonymous posting of reviews is available to Telegram Premium users only";
+        window.Telegram?.WebApp?.showPopup({
+          title,
+          message,
+        });
+      }
     };
 
     return {

@@ -39,7 +39,7 @@ export default function useReviews() {
         params: {
           tgInitData: initData.value,
           page: page.value,
-          perPage: 3
+          perPage: 10
         }
       });
 
