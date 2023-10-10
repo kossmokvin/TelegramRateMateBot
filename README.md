@@ -199,5 +199,5 @@ Your MiniApp will be available by link https://t.me/RateMateCloneBot/rate
 
 To Learn more about the RateMateBot read the [Step by step Development Guide](https://smqn.notion.site/Step-by-step-Development-Guide-of-RateMate-Telegram-Bot-faf23f9e326e4c98b7e49eabb6141c53?pvs=4), where all the development process is described step by step and from the very beginning. You will know know about why the Symfony and Vue were chosen as a Framework for the MiniApp and how to use all their power to scale your MiniApp!
 
-# Known issues
+# Known issues...
 - Reviews for bots are not available for the community (only for the author) as chat_instance of chat with bot is different for each user. 
