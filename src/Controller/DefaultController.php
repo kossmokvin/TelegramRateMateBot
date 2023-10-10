@@ -8,8 +8,11 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends AbstractController
 {
 
-    #[Route('/miniapp')]
-    public function frontpage()
+    /**
+     * Main Controller that opens the Vue Frontend Build
+     */
+    #[Route('/app')]
+    public function tgMiniApp()
     {
       $tmpl = file_get_contents('../public/miniapp/index.html');
       $response = new Response();
