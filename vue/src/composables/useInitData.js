@@ -16,7 +16,7 @@ export default function useInitData() {
 
   // Has the current user the Telegram Premium Status
   const isPremiumUser = computed(() => {
-    return initData.value?.user?.is_premium;
+    return tgData.value?.user?.is_premium;
   });
 
   return {
