@@ -22,6 +22,11 @@ Telegram Bot - https://t.me/RateMateBot/
 - Nobody will be able to rate your channel until you will publish the Rate Link yourself as a channel post.
 - But if you have channel comments enabled (supergroup chat attached to your channel) anyone will be able to publish this link in the comments and rate it. But in ths case the reviews are related to the supergroup chat itself, not a channel.
 
+### Used Technologies
+This Telegram MiniApp uses Symfony 6.3 PHP Framework for quick and scalable backend API and Vue 3 JS Framework for reactive and smooth Frontend user experience. 
+
+Read the [Step by step Development Guide](https://smqn.notion.site/Step-by-step-Development-Guide-of-RateMate-Telegram-Bot-faf23f9e326e4c98b7e49eabb6141c53?pvs=4) to learn more why this technologies were chosen and how to use them for quick creation of Telegram MiniApps of ANY type. For example current application has been created from scratch within 4 days only.
+
 ### Open source project
 This is an open source project. You find a setup a setup guide and a detailed documentation about how it was created from scratch. You can use this information to create your own Telegram Bots and Mini Apps.
 
@@ -34,7 +39,7 @@ This repository has educational value as the details step-by-step documentation 
    - Backend Integration
      - Requests validation
    - Quick and Nice Templates without Design skills
-   - Localizations (translation for other languages)
+   - Localizations \ translation for other languages (will be added soon)
    - Telegram Mini Apps API general approach
    - Telegram Mini Apps API examples of use
      - safe handling of Telegram initData
@@ -86,9 +91,8 @@ As the backend part is based on PHP Framework Symfony 6.3, there requirements ar
 - BotFather will ask you to enter a short description. Enter and submit any short description for your mini app (e.g., ```Awesome Mini App to rate channels and groups```).
 - BotFather will ask you to upload a photo, 640x360 pixels. Upload any image you wish respecting required size in pixels. Attach the file to chat with the bot and send it as regular photo. You can't skip this step.
 - BotFather will ask you to upload a demo gif. Upload if you have one or send ```/empty``` command to skip this step.
-- BotFather will ask you to enter a link. Send your app's "Frontend Link" - ```https://<your_domain>/miniapp``` (the content of this URL will be rendered inside Telegram Mini App as iframe). This path is not active yet, but it will be after completion of this guide.
-- Botfather will ask you to enter a short name for your Mini App. This name will be a part of the MiniApp URL, so it is a good idea to choose short and clear name (e.g., ```rate```)
-
+- BotFather will ask you to enter a link. Send your app's "Frontend Link" - ```https://<your_domain>/app``` (the content of this URL will be rendered inside Telegram Mini App as iframe). This path is not active yet, but it will be after completion of this guide.
+- BotFather will ask you to enter a short name for your Mini App. This name will be a part of the MiniApp URL, so it is a good idea to choose short and clear name (e.g., ```rate```)
 
 
 ## Step 3. Install the project on web server
@@ -167,11 +171,34 @@ After steps 3.2.1-3.2.7 your main ```index.php``` file will be located by this p
 So your have to make sure that your web server (and attached domain) is properly configured to have ```~/TelegramRateMateBot/public``` as working directory.
 
 If you use web hosting instead of VPS, sometimes they may use ```~/<your_domain>/public_html``` as working directory and there is no way to change it. In this case you can:
-- remove your existed ```~/<your_domain>``` directory if it exists
-- rename ```~/TelegramRateMateBot``` into ```~/<your_domain>```
-- rename ```~/<your_domain>/public``` into ```~/TelegramRateMateBot/public_html```
+- Move all the files from existed ```~/TelegramRateMateBot``` directory into ```~/<your_domain>``` directory
+- clone ```~/<your_domain>/public``` and name the clone directory as ```~/TelegramRateMateBot/public_html```
+- visit ```~/<your_domain>/src/Controller/DefaultController.php``` and change ```'../public/miniapp/index.html'``` for ```'../public_html/miniapp/index.html'```
 
-#### 1.2.9. Check your web server
+#### 3.2.9. Clear the caches
+```
+$ php bin/console cache:clear
+```
+
+#### 3.2.10. Check your web server
 Open ```https://<your_domain>/test``` in web browser to check is everything is ok. Expected result is json response ```{ success: true }```
 
+## Step 4. Update the Telegram Bot webhook configuration
+Open this link in browser to set Telegram Endpoint for your bot. This will allow the bot the send a message with intro information for all people who will open your bot directly.
 
+```
+https://api.telegram.org/bot<YOUR_TELEGRAM_BOT_TOKEN>/setWebhook?url=https://<YOUR_DOMAIN>/telegram-bot-endpoint
+```
+If everything is done correctly, you will see the response
+```{"ok":true,"result":true,"description":"Webhook was set"}```
+
+## That's all! 
+Your MiniApp will be available by link https://t.me/RateMateCloneBot/rate
+(in case you hae chosen the ```RateMateCloneBot``` and ```rate``` values on step 2.2)
+
+# Step by step Development Guide
+
+To Learn more about the RateMateBot read the [Step by step Development Guide](https://smqn.notion.site/Step-by-step-Development-Guide-of-RateMate-Telegram-Bot-faf23f9e326e4c98b7e49eabb6141c53?pvs=4), where all the development process is described step by step and from the very beginning. You will know know about why the Symfony and Vue were chosen as a Framework for the MiniApp and how to use all their power to scale your MiniApp!
+
+# Known issues
+- Reviews for bots are not available for the community (only for the author) as chat_instance of chat with bot is different for each user. 

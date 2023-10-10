@@ -23,7 +23,6 @@ class TelegramValidationSubscriber implements EventSubscriberInterface
 
     public function onKernelRequest(RequestEvent $event)
     {
-        return; // TODO: Remove this to activate validation
         $request = $event->getRequest();
         $path = $request->getPathInfo();
         $initData = $request->query->get('tgInitData');
