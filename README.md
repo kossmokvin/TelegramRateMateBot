@@ -1,8 +1,7 @@
-# TODO
-- Апдейтни Фронтед линк
-
 # About the Project
  [@RateMateBot](https://t.me/RateMateBot/) - is a Telegram Bot and related Telegram Mini App which allow users to rate existed channels, channels and bots and leave public or anonymous reviews, while the Mini App shows the average rating and all community reviews.
+
+![RateMateBot Screenshot](https://imageupload.io/ib/tbE8yeU9W9ciN77_1696966584.png)
 
 ### Demo
 Telegram Bot - https://t.me/RateMateBot/
