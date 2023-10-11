@@ -16,7 +16,7 @@ export default {
   setup(props) {
     const timeDisplay = computed(() => {
       return timeSince(
-        new Date(props.review.updated_at || props.review.created_at)
+        new Date(props.review?.updated_at || props.review?.created_at)
       );
     });
 
